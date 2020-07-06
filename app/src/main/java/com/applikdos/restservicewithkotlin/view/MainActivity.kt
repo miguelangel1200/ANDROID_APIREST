@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(),MainView  {
         setContentView(R.layout.activity_main)
 
         val boton = findViewById<Button>(R.id.btnRest)
-        boton.setOnClickListener{v -> callServiceGetUsers()  }
+        boton.setOnClickListener{ _ -> callServiceGetUsers()  }
 
     }
 
