@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">KotlinProjectApp</string>
+    <string name="app_title">Welcome</string>
+    <string name="btn_txt">Consult Service</string>
+</resources>
