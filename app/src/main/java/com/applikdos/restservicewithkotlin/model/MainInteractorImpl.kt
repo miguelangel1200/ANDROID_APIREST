@@ -3,35 +3,21 @@ package com.applikdos.restservicewithkotlin.model
 import com.applikdos.restservicewithkotlin.RestEngine
 import com.applikdos.restservicewithkotlin.UserService
 import com.applikdos.restservicewithkotlin.entities.UserDataCollectionItem
-import com.applikdos.restservicewithkotlin.presenter.MainPresenter
-import com.applikdos.restservicewithkotlin.presenter.MainPresenterImpl
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observer
+import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
 
-class MainInteractorImpl(presenter: MainPresenterImpl): MainInteractor{
+class MainInteractorImpl @Inject constructor(
+) : MainInteractor {
 
-    var preseter: MainPresenterImpl = presenter
-
-    override fun listUsers() {
-        val userService: UserService = RestEngine.getRestEngine().create(UserService::class.java)
-        val result: Call<List<UserDataCollectionItem>> = userService.listUsers()
-
-        result.enqueue(object : Callback<List<UserDataCollectionItem>> {
-
-            override fun onFailure(call: Call<List<UserDataCollectionItem>>, t: Throwable) {
-                preseter.errorResult(t.message.toString())
-            }
-
-            override fun onResponse(call: Call<List<UserDataCollectionItem>>,
-                                    response: Response<List<UserDataCollectionItem>>
-            ) {
-                response.body()?.let { preseter.showResult(it) }
-            }
-
-        })
+    override fun listUsers(subscriber: Observer<List<UserDataCollectionItem>>) {
+        RestEngine.getRestEngine().create(UserService::class.java).listUsers()
+            .subscribeOn(Schedulers.newThread())
+            .map { it.filter { it.address.city == "South Elvis" } }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeWith(subscriber)
     }
-
 
 }

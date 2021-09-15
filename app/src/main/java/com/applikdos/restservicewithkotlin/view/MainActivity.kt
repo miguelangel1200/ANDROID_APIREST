@@ -1,24 +1,30 @@
 package com.applikdos.restservicewithkotlin.view
 
 import android.os.Bundle
-import android.widget.Button
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.applikdos.restservicewithkotlin.R
+import com.applikdos.restservicewithkotlin.databinding.ActivityMainBinding
 import com.applikdos.restservicewithkotlin.entities.UserDataCollectionItem
-import com.applikdos.restservicewithkotlin.presenter.MainPresenterImpl
+import com.applikdos.restservicewithkotlin.presenter.MainPresenter
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(),MainView  {
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity(), MainView {
 
-    var presenter: MainPresenterImpl = MainPresenterImpl(this);
+    private lateinit var binding: ActivityMainBinding
+
+    @Inject
+    lateinit var presenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        val boton = findViewById<Button>(R.id.btnRest)
-        boton.setOnClickListener{ _ -> callServiceGetUsers()  }
-
+        binding.btnRest.setOnClickListener { callServiceGetUsers() }
     }
 
     private fun callServiceGetUsers() {
@@ -26,11 +32,12 @@ class MainActivity : AppCompatActivity(),MainView  {
     }
 
     override fun showResult(result: List<UserDataCollectionItem>) {
-        Toast.makeText(this,"Success Response",Toast.LENGTH_LONG).show()
+        Log.d("Success Response", result.toString())
+        Toast.makeText(this, "Success Response", Toast.LENGTH_LONG).show()
     }
 
     override fun errorResult(t: String) {
-        Toast.makeText(this,"Error Reponse",Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Error Reponse", Toast.LENGTH_LONG).show()
     }
 
 
