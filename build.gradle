@@ -28,6 +28,12 @@ buildscript {
                     'com.squareup.okhttp3:logging-interceptor:4.6.0'
             ],hilt: [
                     'com.google.dagger:hilt-android:2.28-alpha'
+            ],
+            testing: [
+                    'junit:junit:4.12',
+                    'org.mockito:mockito-core:3.+',
+                    'org.mockito.kotlin:mockito-kotlin:3.2.0',
+                    'org.mockito:mockito-inline:3.11.2'
             ]
 
     ]
