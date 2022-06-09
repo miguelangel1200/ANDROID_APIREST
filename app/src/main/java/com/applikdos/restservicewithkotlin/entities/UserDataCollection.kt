@@ -3,31 +3,9 @@ package com.applikdos.restservicewithkotlin.entities
 class UserDataCollection : ArrayList<UserDataCollectionItem>()
 
 data class UserDataCollectionItem(
-    val address: Address,
-    val company: Company,
-    val email: String,
     val id: Int,
     val name: String,
-    val phone: String,
-    val username: String,
-    val website: String
+    val precio: Double,
+    val description: String
 )
 
-data class Address(
-    val city: String,
-    val geo: Geo,
-    val street: String,
-    val suite: String,
-    val zipcode: String
-)
-
-data class Company(
-    val bs: String,
-    val catchPhrase: String,
-    val name: String
-)
-
-data class Geo(
-    val lat: String,
-    val lng: String
-)

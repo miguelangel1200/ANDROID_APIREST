@@ -1,5 +1,25 @@
 <resources>
-    <string name="app_name">KotlinProjectApp</string>
+    <string name="app_name">Virtual Academy</string>
     <string name="app_title">Welcome</string>
     <string name="btn_txt">Consult Service</string>
+
+    <string name="hint_username">Usuario</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="button_sign_in">Ingresar</string>
+    <string name="button_sign_up">Registrarte</string>
+    <string name="button_send">Enviar</string>
+    <string name="text_forgot_password">Olvidaste tu contraseña?</string>
+    <string name="text_signin_message">Hola!, Ingresa con tu cuenta</string>
+    <string name="text_signin_social_media">O registrate usando tu red social</string>
+    <string name="text_signup_social_media">O registrate usando tu red social</string>
+    <string name="text_signin_signup">No tienes una cuenta? <b>Registrate</b></string>
+    <string name="text_signup_terms">Para registrate debes aceptar nuestros <b>terminos y condiciones</b></string>
+    <string name="text_signup_message">Hola, permitenos configurar tu cuentat</string>
+
+    <string name="text_forgot_password_title">Olvidaste tu contraseña? No te preocupes</string>
+    <string name="text_forgot_password_message">Podemos enviarte un link para que restaures tu contraseña</string>
+
+    <string name="hint_email">Email</string>
+    <string name="hint_phone">Celular</string>
+    <string name="hint_confirm_password">Confirmar contraseña</string>
 </resources>

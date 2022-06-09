@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity(), MainView {
         setContentView(view)
 
         binding.btnRest.setOnClickListener { callServiceGetUsers() }
+
     }
 
     private fun callServiceGetUsers() {

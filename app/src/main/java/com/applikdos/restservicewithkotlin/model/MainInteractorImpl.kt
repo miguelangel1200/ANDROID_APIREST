@@ -15,7 +15,7 @@ class MainInteractorImpl @Inject constructor(
     override fun listUsers(subscriber: Observer<List<UserDataCollectionItem>>) {
         RestEngine.getRestEngine().create(UserService::class.java).listUsers()
             .subscribeOn(Schedulers.newThread())
-            .map { it.filter { it.address.city == "South Elvis" } }
+            .map { it.filter { it.name == "South Elvis" } }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeWith(subscriber)
     }
